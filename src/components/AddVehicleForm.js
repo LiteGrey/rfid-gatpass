@@ -143,7 +143,6 @@ const AddVehicleForm = ({ onSubmit, onCancel }) => {
                 value={formData.sticker_number}
                 onChange={handleChange}
                 onKeyDown={handleStickerInput}
-                placeholder="Scan RFID or enter sticker number"
                 className={rfidDetected ? 'rfid-detected' : ''}
               />
             </div>
@@ -223,7 +222,7 @@ const AddVehicleForm = ({ onSubmit, onCancel }) => {
                 name="vehicle_type"
                 value={formData.vehicle_type}
                 onChange={handleChange}
-                placeholder="e.g., SUV, Sedan"
+                placeholder=""
               />
             </div>
           </div>
