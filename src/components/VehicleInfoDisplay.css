@@ -1,0 +1,231 @@
+.vehicle-info-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1500;
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.vehicle-info-card {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  max-width: 450px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  animation: slideUp 0.4s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.close-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #999;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.close-btn:hover {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.vehicle-info-header {
+  background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+  color: white;
+  padding: 20px;
+  border-radius: 12px 12px 0 0;
+}
+
+.vehicle-info-header h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.vehicle-image-section {
+  padding: 20px;
+  text-align: center;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.vehicle-image-section img {
+  width: 100%;
+  max-width: 300px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 2px solid #e0e0e0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.vehicle-info-section {
+  padding: 16px 20px;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.vehicle-info-section h4 {
+  margin: 0 0 12px 0;
+  font-size: 13px;
+  font-weight: 700;
+  color: #2c3e50;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  font-size: 14px;
+}
+
+.info-item label {
+  font-weight: 600;
+  color: #555;
+}
+
+.info-item span {
+  color: #2c3e50;
+  text-align: right;
+  flex: 1;
+  margin-left: 10px;
+}
+
+.owner-name {
+  font-weight: 700;
+  font-size: 16px;
+  color: #1a73e8;
+}
+
+.license-plate {
+  background-color: #fff9e6;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-family: monospace;
+  font-weight: 700;
+}
+
+/* Expiry Information Styles */
+.expiry-section {
+  background-color: #f5f5f5;
+}
+
+.expiry-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px;
+  margin-bottom: 8px;
+  border-radius: 6px;
+  font-size: 13px;
+  border-left: 4px solid;
+}
+
+.expiry-item.valid {
+  background-color: #e8f5e9;
+  border-left-color: #4caf50;
+}
+
+.expiry-item.expired {
+  background-color: #ffebee;
+  border-left-color: #d32f2f;
+}
+
+.expiry-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+}
+
+.status-icon {
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.expiry-date {
+  font-family: monospace;
+  font-weight: 600;
+  color: #333;
+}
+
+.expiry-item.expired .expiry-date {
+  color: #d32f2f;
+}
+
+.close-info-btn {
+  width: 100%;
+  padding: 12px 16px;
+  border: none;
+  background-color: #1a73e8;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 0 0 12px 12px;
+}
+
+.close-info-btn:hover {
+  background-color: #1557b0;
+}
+
+@media (max-width: 600px) {
+  .vehicle-info-card {
+    width: 95%;
+    max-height: 95vh;
+  }
+
+  .info-item {
+    flex-direction: column;
+  }
+
+  .info-item span {
+    text-align: left;
+    margin-left: 0;
+    margin-top: 4px;
+  }
+
+  .vehicle-image-section img {
+    max-width: 100%;
+    height: 200px;
+  }
+}

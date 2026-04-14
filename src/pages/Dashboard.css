@@ -1,0 +1,137 @@
+.dashboard-container {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.dashboard-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 30px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.stat-card {
+  background: linear-gradient(135deg, #f5f7fa 0%, #ffffff 100%);
+  border: 1px solid #e8ecf1;
+  border-radius: 8px;
+  padding: 20px;
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.stat-icon {
+  font-size: 32px;
+  min-width: 50px;
+  text-align: center;
+}
+
+.stat-content {
+  flex: 1;
+}
+
+.stat-label {
+  color: #666;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0 0 8px 0;
+  font-weight: 500;
+}
+
+.stat-value {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1a73e8;
+  margin: 0;
+}
+
+.stat-value.status-live {
+  color: #34a853;
+}
+
+.status-icon {
+  color: #34a853;
+}
+
+.recent-passes-section {
+  padding: 30px;
+}
+
+.recent-passes-section h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+}
+
+.passes-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.passes-table thead {
+  background-color: #f0f4f8;
+  border-bottom: 2px solid #d0d8e0;
+}
+
+.passes-table th {
+  padding: 12px 16px;
+  text-align: left;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.passes-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #e8ecf1;
+}
+
+.passes-table tbody tr:hover {
+  background-color: #f9fbfc;
+}
+
+.license-plate {
+  background-color: #fff3cd;
+  padding: 4px 8px;
+  border-radius: 3px;
+  font-weight: 500;
+  font-family: 'Courier New', monospace;
+}
+
+.no-data {
+  text-align: center;
+  color: #999;
+  padding: 30px 16px !important;
+}
+
+@media (max-width: 768px) {
+  .dashboard-stats {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+
+  .passes-table {
+    font-size: 12px;
+  }
+
+  .passes-table th,
+  .passes-table td {
+    padding: 8px;
+  }
+}

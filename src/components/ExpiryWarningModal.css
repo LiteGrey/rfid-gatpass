@@ -1,0 +1,289 @@
+.expiry-warning-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.expiry-warning-modal {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  max-width: 500px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.expiry-warning-modal.warning {
+  border-top: 4px solid #ff9800;
+}
+
+.expiry-warning-modal.blocked {
+  border-top: 4px solid #d32f2f;
+}
+
+.warning-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 20px;
+  background: linear-gradient(135deg, #fff5e6 0%, #ffe0b2 100%);
+  border-bottom: 2px solid #ff9800;
+}
+
+.expiry-warning-modal.blocked .warning-header {
+  background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%);
+  border-bottom-color: #d32f2f;
+}
+
+.warning-icon {
+  font-size: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.warning-icon.blocked-icon {
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.warning-header h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: #d84315;
+}
+
+.expiry-warning-modal.blocked .warning-header h3 {
+  color: #d32f2f;
+}
+
+.warning-body {
+  padding: 20px;
+}
+
+.warning-message {
+  margin: 0 0 15px 0;
+  font-size: 14px;
+  color: #333;
+  line-height: 1.5;
+  padding: 12px;
+  background-color: #fff9c4;
+  border-left: 4px solid #ff9800;
+  border-radius: 4px;
+}
+
+.expiry-warning-modal.blocked .warning-message {
+  background-color: #ffcdd2;
+  border-left-color: #d32f2f;
+  color: #b71c1c;
+}
+
+.vehicle-info {
+  margin-bottom: 15px;
+}
+
+.vehicle-info h4,
+.expiry-details h4 {
+  margin: 0 0 10px 0;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #555;
+  letter-spacing: 0.5px;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 13px;
+}
+
+.info-row:last-child {
+  border-bottom: none;
+}
+
+.info-row label {
+  font-weight: 600;
+  color: #666;
+}
+
+.info-row span {
+  color: #333;
+  text-align: right;
+  flex: 1;
+  margin-left: 10px;
+}
+
+.license-plate {
+  background-color: #fff9e6;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-family: monospace;
+  font-weight: 700;
+}
+
+.expiry-details {
+  margin-bottom: 15px;
+  padding: 12px;
+  background-color: #fff5e6;
+  border-radius: 6px;
+  border-left: 4px solid #ff9800;
+}
+
+.expiry-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  font-size: 13px;
+}
+
+.expiry-item.expired {
+  color: #d84315;
+}
+
+.doc-name {
+  font-weight: 600;
+}
+
+.status {
+  background-color: #d32f2f;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 3px;
+  font-weight: 700;
+  font-size: 11px;
+}
+
+.warning-counter {
+  margin-top: 15px;
+  padding: 12px;
+  background-color: #e3f2fd;
+  border-radius: 6px;
+  border-left: 4px solid #2196f3;
+}
+
+.warning-counter p {
+  margin: 0 0 8px 0;
+  font-size: 13px;
+  color: #1565c0;
+}
+
+.warning-counter strong {
+  color: #d32f2f;
+  font-size: 16px;
+}
+
+.progress-bar {
+  height: 6px;
+  background-color: #e0e0e0;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #ff9800 0%, #d32f2f 100%);
+  transition: width 0.3s ease;
+}
+
+.warning-footer {
+  display: flex;
+  gap: 10px;
+  padding: 15px 20px;
+  background-color: #f5f5f5;
+  border-top: 1px solid #e0e0e0;
+}
+
+.btn-allow,
+.btn-deny,
+.btn-close {
+  flex: 1;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-allow {
+  background-color: #4caf50;
+  color: white;
+}
+
+.btn-allow:hover {
+  background-color: #45a049;
+  box-shadow: 0 2px 8px rgba(76, 175, 80, 0.3);
+}
+
+.btn-deny {
+  background-color: #d32f2f;
+  color: white;
+}
+
+.btn-deny:hover {
+  background-color: #b71c1c;
+  box-shadow: 0 2px 8px rgba(211, 47, 47, 0.3);
+}
+
+.btn-close {
+  background-color: #757575;
+  color: white;
+}
+
+.btn-close:hover {
+  background-color: #616161;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 600px) {
+  .expiry-warning-modal {
+    width: 95%;
+  }
+
+  .warning-footer {
+    flex-direction: column;
+  }
+
+  .info-row {
+    flex-direction: column;
+  }
+
+  .info-row span {
+    text-align: left;
+    margin-left: 0;
+    margin-top: 4px;
+  }
+}
