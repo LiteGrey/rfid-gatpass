@@ -135,7 +135,9 @@ export const sendGateDeniedCommand = async (vehicleData) => {
   }
 };
 
-export default {
+const espGateService = {
   sendGateAccessCommand,
   sendGateDeniedCommand
 };
+
+export default espGateService;

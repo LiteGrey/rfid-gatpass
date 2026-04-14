@@ -7,6 +7,7 @@ import VehicleDetailModal from '../components/VehicleDetailModal';
 import './Vehicles.css';
 
 const Vehicles = () => {
+  // eslint-disable-next-line no-unused-vars
   const navigate = useNavigate();
   const { vehicles, addVehicle, updateVehicle, deleteVehicle, importVehiclesFromCSV } = useRFID();
   const [showAddForm, setShowAddForm] = useState(false);

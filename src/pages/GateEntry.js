@@ -13,6 +13,7 @@ const GateEntry = () => {
   const [warningData, setWarningData] = useState(null);
   const [gateStatus, setGateStatus] = useState('');
   const [gateMessage, setGateMessage] = useState('');
+  // eslint-disable-next-line no-unused-vars
   const [isProcessing, setIsProcessing] = useState(false);
   const [showVehicleInfo, setShowVehicleInfo] = useState(false);
   const [vehicleInfoData, setVehicleInfoData] = useState(null);
