@@ -7,13 +7,13 @@ export const APP_CONFIG = {
   // ESP32/Arduino Gate Control Settings
   ESP: {
     // IP Address of the ESP device on the network
-    IP_ADDRESS: '10.219.112.163',
+    IP_ADDRESS: 'http://10.51.14.153',
     // Port number for ESP device (default HTTP)
     PORT: 80,
     // Request timeout in milliseconds
     TIMEOUT_MS: 5000,
     // API endpoint for gate control
-    GATE_CONTROL_ENDPOINT: '/api/gate/access'
+    GATE_CONTROL_ENDPOINT: '/gateopen'
   },
 
   // Gate Control Settings

@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useRFID } from '../context/RFIDContext';
 import ExpiryWarningModal from '../components/ExpiryWarningModal';
 import VehicleInfoDisplay from '../components/VehicleInfoDisplay';
@@ -17,8 +17,35 @@ const GateEntry = () => {
   const [isProcessing, setIsProcessing] = useState(false);
   const [showVehicleInfo, setShowVehicleInfo] = useState(false);
   const [vehicleInfoData, setVehicleInfoData] = useState(null);
+  const [isFadingOut, setIsFadingOut] = useState(false);
   const { verifyAndEnterCard, allowEntryWithWarning } = useRFID();
   const inputRef = useRef(null);
+  const fadeTimeoutRef = useRef(null);
+  const closeTimeoutRef = useRef(null);
+
+  // Auto‑close and fade for the "Access Granted" overlay
+  useEffect(() => {
+    // Clear any pending timers when showVehicleInfo changes
+    if (fadeTimeoutRef.current) clearTimeout(fadeTimeoutRef.current);
+    if (closeTimeoutRef.current) clearTimeout(closeTimeoutRef.current);
+    setIsFadingOut(false);
+
+    if (showVehicleInfo) {
+      // Start fade after 4 seconds
+      fadeTimeoutRef.current = setTimeout(() => {
+        setIsFadingOut(true);
+      }, 4000);
+      // Remove overlay completely after 5 seconds
+      closeTimeoutRef.current = setTimeout(() => {
+        setShowVehicleInfo(false);
+      }, 5000);
+    }
+
+    return () => {
+      if (fadeTimeoutRef.current) clearTimeout(fadeTimeoutRef.current);
+      if (closeTimeoutRef.current) clearTimeout(closeTimeoutRef.current);
+    };
+  }, [showVehicleInfo]);
 
   // Send gate control command after successful verification
   const triggerGateAccess = async (vehicle) => {
@@ -37,7 +64,7 @@ const GateEntry = () => {
       }, 5000);
     } else {
       setGateStatus('error');
-      setGateMessage(`⚠️ ${result.message}`);
+      setGateMessage(`🔓   ${result.message}`);
     }
 
     setTimeout(() => {
@@ -193,8 +220,11 @@ const GateEntry = () => {
 
       {showVehicleInfo && vehicleInfoData && (
         <div className="vehicle-info-overlay">
-          <div className="vehicle-info-card" onClick={e => e.stopPropagation()}>
-            <button className="close-btn" onClick={() => setShowVehicleInfo(false)}>✕</button>
+          <div 
+            className={`vehicle-info-card ${isFadingOut ? 'fade-out' : ''}`}
+            onClick={e => e.stopPropagation()}
+          >
+            {/* No close button here */}
             <div className="vehicle-info-header">
               <h3>✓ Access Granted</h3>
             </div>
@@ -224,10 +254,11 @@ const GateEntry = () => {
                 </div>
               </div>
             </div>
-            {/* Document Status */}
+            {/* Document Status – hideCloseButton prop removes its internal close button */}
             <VehicleInfoDisplay
               vehicle={vehicleInfoData}
               onClose={() => setShowVehicleInfo(false)}
+              hideCloseButton={true}
             />
           </div>
         </div>
@@ -271,7 +302,7 @@ const GateEntry = () => {
               {gateStatus === 'opening' && '🔓'}
               {gateStatus === 'active' && '✓'}
               {gateStatus === 'closed' && '🔒'}
-              {gateStatus === 'error' && '⚠️'}
+              {gateStatus === 'error' && '✓'}
             </span>
             <span className="gate-text">{gateMessage}</span>
           </div>

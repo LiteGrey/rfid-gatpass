@@ -32,7 +32,7 @@ export const sendGateAccessCommand = async (vehicleData) => {
     const timeoutId = setTimeout(() => controller.abort(), TIMEOUT_MS);
 
     const response = await fetch(
-      `http://${IP_ADDRESS}:${PORT}${GATE_CONTROL_ENDPOINT}`,
+      'http://10.51.14.153/gateopen',
       {
         method: 'POST',
         headers: {
